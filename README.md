@@ -1,8 +1,6 @@
 # devkitpro-cmake-config
 Unofficial CMake Package Config for devkitPro.
 
-Also included are simplified toolchain files, under `toolchains/`.
-
 ## Setup
 The default value of `/opt/devkitpro` will be used to find the devkitPro root directory.
 If `DEVKITPRO` is defined as a CMake variable or environment variable, that will be used instead.
@@ -32,5 +30,7 @@ to see them: `set(CMAKE_MESSAGE_LOG_LEVEL VERBOSE)`.
 
 # TODO
 - Analyze existing dkp toolchain files for things that should go into
+- Test dkp toolchain files with package
+- Package simplified toolchain files, under `toolchains/`
 - Determine naming convention, whether to base on dkp toolchain files or not
 - wii and nds support next
