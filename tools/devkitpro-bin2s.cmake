@@ -13,6 +13,7 @@ if(DEVKITPRO_BIN2S)
         # Add a command to process each file with bin2s
         foreach(binary_file IN LISTS binary_files)
 
+            # TODO: Support sub-paths under out_path based on CMAKE_CURRENT_SOURCE_DIR - as in, convert to relative path under CMAKE_CURRENT_SOURCE_DIR, and then use that as under CMAKE_CURRENT_BINARY_DIR
             # Compute output files
             cmake_path(GET binary_file STEM binary_file_stem)
             cmake_path(GET binary_file EXTENSION binary_file_extension)

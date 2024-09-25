@@ -26,9 +26,9 @@ if(DEVKITPRO_ELF2DOL)
         endif()
 
         # Log Target Info
-        message(VERBOSE ${target})
-        message(VERBOSE "    Source File: ${source_file}")
-        message(VERBOSE "    .dol File: ${dol_file}")
+        devkitpro_message(VERBOSE ${target})
+        devkitpro_message(VERBOSE "    Source File: ${source_file}")
+        devkitpro_message(VERBOSE "    .dol File: ${dol_file}")
 
     endfunction(devkitpro_add_elf2dol)
 endif()

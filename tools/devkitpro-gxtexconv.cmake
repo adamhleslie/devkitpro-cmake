@@ -22,6 +22,7 @@ if(DEVKITPRO_GXTEXCONV)
         # Add a command to process each file with gxtexconv
         foreach(scf_file IN LISTS scf_files)
 
+            # TODO: Support sub-paths under out_path based on CMAKE_CURRENT_SOURCE_DIR - as in, convert to relative path under CMAKE_CURRENT_SOURCE_DIR, and then use that as under CMAKE_CURRENT_BINARY_DIR
             # Compute output files
             cmake_path(ABSOLUTE_PATH scf_file)
             cmake_path(RELATIVE_PATH scf_file BASE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
