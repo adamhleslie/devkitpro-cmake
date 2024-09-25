@@ -29,3 +29,8 @@ The relevant functions will use the provided path to the executable instead of t
 
 Each target generating function logs `VERBOSE` messages for relevant properties. Set your CMake log level to `VERBOSE` to greater
 to see them: `set(CMAKE_MESSAGE_LOG_LEVEL VERBOSE)`.
+
+# TODO
+- Analyze existing dkp toolchain files for things that should go into
+- Determine naming convention, whether to base on dkp toolchain files or not
+- wii and nds support next
