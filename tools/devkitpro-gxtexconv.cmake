@@ -25,6 +25,7 @@ if(DEVKITPRO_GXTEXCONV)
         foreach(scf_file IN LISTS scf_files)
 
             devkitpro_get_relative_and_absolute(${scf_file} ${scf_files_dir} scf_file_relative scf_file_absolute)
+            list(APPEND scf_files_absolute ${scf_file_absolute})
 
             # Compute output files
             cmake_path(APPEND out_file_base ${out_dir} ${scf_file_relative})
@@ -41,9 +42,9 @@ if(DEVKITPRO_GXTEXCONV)
             list(APPEND out_files_tpl ${out_file_tpl})
 
             # Create gxtexconv command
+            # Note: out_file_tpl must be the first output listed, making it the primary output, because the generated depfile indicates it as the source of dependency
             add_custom_command(
-                    OUTPUT ${out_file_h} ${out_file_tpl} ${out_file_dep}
-                    DEPENDS ${out_file_tpl} # Self-dependency to cause re-checking of DEPFILE for command
+                    OUTPUT ${out_file_tpl} ${out_file_h} ${out_file_dep}
                     DEPFILE ${out_file_dep}
                     COMMAND ${DEVKITPRO_GXTEXCONV} ARGS -s ${scf_file_absolute} -o ${out_file_tpl} -d ${out_file_dep}
             )
@@ -54,7 +55,7 @@ if(DEVKITPRO_GXTEXCONV)
         set(target_custom "${target}_custom")
         add_custom_target(${target_custom}
                 DEPENDS ${out_files_h} ${out_files_tpl} ${out_file_dep}
-                SOURCES ${scf_files}
+                SOURCES ${scf_files_absolute}
         )
 
         # Interface target for include dependency
