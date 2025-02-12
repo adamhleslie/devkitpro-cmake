@@ -29,6 +29,7 @@ Each target generating function logs `VERBOSE` messages for relevant properties.
 to see them: `set(CMAKE_MESSAGE_LOG_LEVEL VERBOSE)`.
 
 # TODO
+- Add same customization for libraries as tools
 - Analyze existing dkp toolchain files for things that should go into
 - Test dkp toolchain files with package
 - Package simplified toolchain files, under `toolchains/`
