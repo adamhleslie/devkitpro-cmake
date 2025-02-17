@@ -1,9 +1,19 @@
 # devkitpro-cmake-config
 Unofficial CMake Package Config for devkitPro.
 
+## Why?
+
+1. Better Documentation
+Unlike the CMake files packaged with devkitPro, this package config has its features and side effects well documented. All files have comments indicating what they are doing (CMake can be difficult to read!).
+
+2. Fully Featured Modern CMake
+By using modern "Target Based" CMake, there's less you have to worry about to include the stuff you need. Less complexity means less dependencies so your build system is less error prone!
+
+3. Examples!
+At the core of this project's design philosophy is sharing examples, so that you can learn how things work and get past the tough learning phase of integratig CMake.
+
 ## Setup
-The default value of `/opt/devkitpro` will be used to find the devkitPro root directory.
-If `DEVKITPRO` is defined as a CMake variable or environment variable, that will be used instead.
+devkitPro's root directory is expected to be installed at `/opt/devkitpro`, but `DEVKITPRO` may defined as a CMake variable or environment variable to supply a custom install location.
 
 If the package fails to find anything it expects, it will fail CMake with a `FATAL_ERROR` message.
 
@@ -29,9 +39,9 @@ Each target generating function logs `VERBOSE` messages for relevant properties.
 to see them: `set(CMAKE_MESSAGE_LOG_LEVEL VERBOSE)`.
 
 # TODO
-- Add same customization for libraries as tools
 - Analyze existing dkp toolchain files for things that should go into
 - Test dkp toolchain files with package
 - Package simplified toolchain files, under `toolchains/`
 - Determine naming convention, whether to base on dkp toolchain files or not
+- Update docs
 - wii and nds support next
