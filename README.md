@@ -3,13 +3,13 @@ Unofficial CMake Package Config for devkitPro.
 
 ## Why?
 
-1. Better Documentation
+1. Better Documentation  
 Unlike the CMake files packaged with devkitPro, this package config has its features and side effects well documented. All files have comments indicating what they are doing (CMake can be difficult to read!).
 
-2. Fully Featured Modern CMake
+2. Fully Featured Modern CMake  
 By using modern "Target Based" CMake, there's less you have to worry about to include the stuff you need. Less complexity means less dependencies so your build system is less error prone!
 
-3. Examples!
+3. Examples!  
 At the core of this project's design philosophy is sharing examples, so that you can learn how things work and get past the tough learning phase of integratig CMake.
 
 ## Setup
@@ -43,7 +43,8 @@ to see them: `set(CMAKE_MESSAGE_LOG_LEVEL VERBOSE)`.
 - DEVKITPRO -> DKP
 - DKP_BIN2S_ALIGNMENT support
 - GCDSPTOOL_EXE
-- Update compiler flags (package config / template) based on dkp-rule-overrides.cmake
+- Handle failure of finding libs and programs eloquently
+- Update compiler flags (package config / template / platform) based on dkp-rule-overrides.cmake
 - Analyze remaining dkp toolchain files for things that should be added
 - Update docs
 - wii and nds support next
@@ -60,10 +61,10 @@ Toolchain Differences:
   * CMAKE\_\${lang}\_OUTPUT_EXTENSION, CMAKE\_\${lang}\_OUTPUT\_EXTENSION\_REPLACE, CMAKE\_\${lang}\_FLAGS\_DEBUG\_INIT, CMAKE\_\${lang}\_FLAGS\_MINSIZEREL\_INIT, CMAKE\_\${lang}\_FLAGS\_RELEASE\_INIT, CMAKE\_\${lang}\_FLAGS\_RELWITHDEBINFO\_INIT
 * No setting of DKP_INSTALL_PREFIX_INIT
 * Gamecube
-  * No setting of OGC_... variables
-  * No Setting of
-    * ELF2DOL_EXE - use package config's DEVKITPRO_ELF2DOL + devkitpro_add_elf2dol
-    * GXTEXCONV_EXE - use package config's DEVKITPRO_GXTEXCONV + devkitpro_add_gxtexconv
+  * No setting of OGC_... variables - Use Package Config's libogc targets
+  * No setting of
+    * ELF2DOL_EXE - use Package Config's DEVKITPRO_ELF2DOL + devkitpro_add_elf2dol
+    * GXTEXCONV_EXE - use Package Config's DEVKITPRO_GXTEXCONV + devkitpro_add_gxtexconv
     * GCDSPTOOL_EXE - TODO
 
 Package Config Differences:
