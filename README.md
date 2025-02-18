@@ -29,8 +29,32 @@ Each target generating function logs `VERBOSE` messages for relevant properties.
 to see them: `set(CMAKE_MESSAGE_LOG_LEVEL VERBOSE)`.
 
 # TODO
-- Analyze existing dkp toolchain files for things that should go into
 - Test dkp toolchain files with package
-- Package simplified toolchain files, under `toolchains/`
-- Determine naming convention, whether to base on dkp toolchain files or not
+- DEVKITPRO -> DKP
+- DKP_BIN2S_ALIGNMENT support
+- GCDSPTOOL_EXE
+- Update compiler flags (package config / template) based on dkp-rule-overrides.cmake
+- Analyze remaining dkp toolchain files for things that should be added
 - wii and nds support next
+
+# Compatibility
+Toolchain Differences:
+* No setting of CMAKE_MODULE_PATH, CMAKE_TRY_COMPILE_PLATFORM_VARIABLES, CMAKE_FIND_PACKAGE_PREFER_CONFIG, CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH variables
+* No addition of standard system environment variables to CMAKE_SYSTEM_PROGRAM_PATH - not needed without CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH being set
+* No setting of
+  * DKP_BIN2S - use package config's DEVKITPRO_BIN2S + devkitpro_add_bin2s
+* Variable changes: DKP_OBJCOPY -> CMAKE_OBJCOPY, DKP_NM -> CMAKE_NM
+* New variable: CMAKE_OBJDUMP
+* No language flag overrides or compiler output extension overrides from dkp-rule-overrides.cmake - these are good options but not required for the platforms
+  * CMAKE\_\${lang}\_OUTPUT_EXTENSION, CMAKE\_\${lang}\_OUTPUT\_EXTENSION\_REPLACE, CMAKE\_\${lang}\_FLAGS\_DEBUG\_INIT, CMAKE\_\${lang}\_FLAGS\_MINSIZEREL\_INIT, CMAKE\_\${lang}\_FLAGS\_RELEASE\_INIT, CMAKE\_\${lang}\_FLAGS\_RELWITHDEBINFO\_INIT
+* No setting of DKP_INSTALL_PREFIX_INIT
+* Gamecube
+  * No setting of OGC_... variables
+  * No Setting of
+    * ELF2DOL_EXE - use package config's DEVKITPRO_ELF2DOL + devkitpro_add_elf2dol
+    * GXTEXCONV_EXE - use package config's DEVKITPRO_GXTEXCONV + devkitpro_add_gxtexconv
+    * GCDSPTOOL_EXE - TODO
+
+Package Config Differences:
+* No catnip
+* ...
