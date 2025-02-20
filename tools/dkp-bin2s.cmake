@@ -5,16 +5,26 @@ dkp_find_file(DKP_BIN2S "tools/bin/bin2s")
 
 if(DKP_BIN2S)
     # Generates assembly and header files from binary files, maintaining the original directory structure
+    # Extensions in binary file names are appended to the generated file names with an underscore
+    # - texture.tpl -> texture_tpl.h / texture_tpl.s
     # If binary_files are relative, they are evaluated based on binary_files_dir
     # If binary_files are absolute, they must be under binary_files_dir
     # If binary_files_dir is relative, CMAKE_CURRENT_SOURCE_DIR will be used as its base directory
-    # Extensions in binary file names are appended to the generated file names with an underscore
-    # - texture.tpl -> texture_tpl.h / texture_tpl.s
     # If out_dir is relative, CMAKE_CURRENT_BINARY_DIR will be used as its base directory
-    function(dkp_add_bin2s target binary_files binary_files_dir out_dir)
+    # Optional: extra argument will be used as the BIN2S alignment, and if not provided, DKP_BIN2S_ALIGNMENT or the default value of 4
+    function(dkp_add_bin2s target binary_files binary_files_dir out_dir #[[optional: alignment]])
 
         dkp_make_absolute_if_relative(binary_files_dir ${CMAKE_CURRENT_SOURCE_DIR})
         dkp_make_absolute_if_relative(out_dir ${CMAKE_CURRENT_BINARY_DIR})
+
+        # Try get alignment from optional argument ARGV4 or DKP_BIN2S_ALIGNMENT
+        if(ARGC GREATER 4)
+            set(alignment ${ARGV4})
+        elseif(DEFINED DKP_BIN2S_ALIGNMENT)
+            set(alignment ${DKP_BIN2S_ALIGNMENT})
+        else()
+            set(alignment 4)
+        endif()
 
         # Add a command to process each file with bin2s
         foreach(binary_file IN LISTS binary_files)
@@ -47,7 +57,7 @@ if(DKP_BIN2S)
             add_custom_command(
                     OUTPUT ${out_file_h} ${out_file_s}
                     DEPENDS ${binary_file_absolute}
-                    COMMAND ${DKP_BIN2S} ARGS -a 32 -H ${out_file_h} ${binary_file_absolute} > ${out_file_s}
+                    COMMAND ${DKP_BIN2S} ARGS -a ${alignment} -H ${out_file_h} ${binary_file_absolute} > ${out_file_s}
             )
 
         endforeach(binary_file)
