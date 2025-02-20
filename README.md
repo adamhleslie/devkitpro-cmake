@@ -40,7 +40,6 @@ to see them: `set(CMAKE_MESSAGE_LOG_LEVEL VERBOSE)`.
 
 # TODO
 - Test dkp toolchain files with package
-- DEVKITPRO -> DKP
 - DKP_BIN2S_ALIGNMENT support
 - GCDSPTOOL_EXE
 - Handle failure of finding libs and programs eloquently

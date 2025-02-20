@@ -1,3 +1,5 @@
+include_guard(GLOBAL)
+
 # devkitPPC toolchain file
 include("${CMAKE_CURRENT_LIST_DIR}/devkitppc.toolchain.cmake")
 
@@ -11,7 +13,3 @@ list(APPEND CMAKE_SYSTEM_PREFIX_PATH
 
 # Find pkg-config specific to GameCube
 find_program(PKG_CONFIG_EXECUTABLE "powerpc-eabi-pkg-config" HINTS "${DEVKITPRO}/portlibs/gamecube/bin" REQUIRED)
-
-# TODO: Is there a better way to do this?
-# Set bin2s alignment for use with dkp_add_bin2s function
-set(DKP_BIN2S_ALIGNMENT 32)

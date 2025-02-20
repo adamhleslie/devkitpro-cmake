@@ -1,3 +1,5 @@
+include_guard(GLOBAL)
+
 # Set up devkitPro variable
 if(NOT DEFINED DEVKITPRO)
     if(DEFINED ENV{DEVKITPRO})

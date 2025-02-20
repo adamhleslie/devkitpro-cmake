@@ -1,3 +1,5 @@
+include_guard(GLOBAL)
+
 # shared toolchain file
 include("${CMAKE_CURRENT_LIST_DIR}/shared.toolchain.cmake")
 
@@ -5,6 +7,10 @@ include("${CMAKE_CURRENT_LIST_DIR}/shared.toolchain.cmake")
 set(CMAKE_SYSTEM_NAME "Generic") # embedded system without an OS
 set(CMAKE_SYSTEM_VERSION 1)
 set(CMAKE_SYSTEM_PROCESSOR "ppc")
+
+# TODO: Is there a better way to do this?
+# Set bin2s alignment for use with dkp_add_bin2s function
+set(DKP_BIN2S_ALIGNMENT 32)
 
 # Add find_... function paths for cross-compilation
 list(APPEND CMAKE_SYSTEM_PREFIX_PATH
