@@ -19,19 +19,19 @@ If the package fails to find anything it expects, it will fail CMake with a `FAT
 
 ### Custom Executables
 When locating each executable provided by devkitPro, the package will first check for a CMake variable or environment 
-variable of the form `DEVKITPRO_X`, where X is replaced by the upper case name of the executable, ie. `DEVKITPRO_BIN2S`. 
+variable of the form `DKP_X`, where X is replaced by the upper case name of the executable, ie. `DKP_BIN2S`. 
 The relevant functions will use the provided path to the executable instead of the default path.
 
 ## Definitions
 `DEVKITPRO`: devkitPro root directory
 
-`DEVKITPRO_X`: path to executable (where X is replaced by the upper case name of the executable ie. `DEVKITPRO_BIN2S`)
+`DKP_X`: path to executable (where X is replaced by the upper case name of the executable ie. `DKP_BIN2S`)
 
-`devkitpro_add_bin2s(target binary_files)`
+`dkp_add_bin2s(target binary_files)`
 
-`devkitpro_add_elf2dol(target dol_file_name source_file default_build_target)`
+`dkp_add_elf2dol(target dol_file_name source_file default_build_target)`
 
-`devkitpro_add_gxtexconv(target scf_files)` + Target Property: `DEVKITPRO_GXTEXCONV_TPL_FILES`
+`dkp_add_gxtexconv(target scf_files)` + Target Property: `DKP_GXTEXCONV_TPL_FILES`
 
 ## Debugging
 
@@ -53,7 +53,7 @@ Toolchain Differences:
 * No setting of CMAKE_MODULE_PATH, CMAKE_TRY_COMPILE_PLATFORM_VARIABLES, CMAKE_FIND_PACKAGE_PREFER_CONFIG, CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH variables
 * No addition of standard system environment variables to CMAKE_SYSTEM_PROGRAM_PATH - not needed without CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH being set
 * No setting of
-  * DKP_BIN2S - use package config's DEVKITPRO_BIN2S + devkitpro_add_bin2s
+  * DKP_BIN2S - use package config's DKP_BIN2S + dkp_add_bin2s
 * Variable changes: DKP_OBJCOPY -> CMAKE_OBJCOPY, DKP_NM -> CMAKE_NM
 * New variable: CMAKE_OBJDUMP
 * No language flag overrides or compiler output extension overrides from dkp-rule-overrides.cmake - these are good options but not required for the platforms
@@ -62,8 +62,8 @@ Toolchain Differences:
 * Gamecube
   * No setting of OGC_... variables
   * No Setting of
-    * ELF2DOL_EXE - use package config's DEVKITPRO_ELF2DOL + devkitpro_add_elf2dol
-    * GXTEXCONV_EXE - use package config's DEVKITPRO_GXTEXCONV + devkitpro_add_gxtexconv
+    * ELF2DOL_EXE - use package config's DKP_ELF2DOL + dkp_add_elf2dol
+    * GXTEXCONV_EXE - use package config's DKP_GXTEXCONV + dkp_add_gxtexconv
     * GCDSPTOOL_EXE - TODO
 
 Package Config Differences:

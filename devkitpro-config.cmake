@@ -1,19 +1,19 @@
 cmake_minimum_required(VERSION 3.20.0)
 
-include("${CMAKE_CURRENT_LIST_DIR}/devkitpro-helpers.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/dkp-helpers.cmake")
 
 # Set up devkitPro variable
 if(DEFINED DEVKITPRO)
-    devkitpro_message(STATUS "Using existing DEVKITPRO value: ${DEVKITPRO}")
+    dkp_message(STATUS "Using existing DEVKITPRO value: ${DEVKITPRO}")
 else()
     if(DEFINED ENV{DEVKITPRO})
         set(DEVKITPRO $ENV{DEVKITPRO})
-        devkitpro_message(STATUS "Setting DEVKITPRO from environment: ${DEVKITPRO}")
+        dkp_message(STATUS "Setting DEVKITPRO from environment: ${DEVKITPRO}")
     elseif(EXISTS "/opt/devkitpro")
         set(DEVKITPRO "/opt/devkitpro")
-        devkitpro_message(STATUS "Setting DEVKITPRO to default location: ${DEVKITPRO}")
+        dkp_message(STATUS "Setting DEVKITPRO to default location: ${DEVKITPRO}")
     else()
-        devkitpro_message(FATAL_ERROR "DEVKITPRO not valid: Default location \"/opt/devkitpro\" does not exist, and DEVKITPRO not set in environment")
+        dkp_message(FATAL_ERROR "DEVKITPRO not valid: Default location \"/opt/devkitpro\" does not exist, and DEVKITPRO not set in environment")
     endif()
 endif()
 

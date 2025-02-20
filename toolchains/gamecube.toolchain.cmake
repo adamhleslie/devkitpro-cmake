@@ -13,5 +13,5 @@ list(APPEND CMAKE_SYSTEM_PREFIX_PATH
 find_program(PKG_CONFIG_EXECUTABLE "powerpc-eabi-pkg-config" HINTS "${DEVKITPRO}/portlibs/gamecube/bin" REQUIRED)
 
 # TODO: Is there a better way to do this?
-# Set bin2s alignment for use with devkitpro_add_bin2s function
-set(DEVKITPRO_BIN2S_ALIGNMENT 32)
+# Set bin2s alignment for use with dkp_add_bin2s function
+set(DKP_BIN2S_ALIGNMENT 32)

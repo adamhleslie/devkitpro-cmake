@@ -1,13 +1,13 @@
 include_guard(GLOBAL)
-# OUT: devkitpro_add_gxtexconv function adds a interface library for converting .scf files and their associated textures into .tpl files
-#      DEVKITPRO_GXTEXCONV_TPL_FILES property on target set to the list of generated .tpl files
+# OUT: dkp_add_gxtexconv function adds a interface library for converting .scf files and their associated textures into .tpl files
+#      DKP_GXTEXCONV_TPL_FILES property on target set to the list of generated .tpl files
 
-devkitpro_find_file(DEVKITPRO_GXTEXCONV "tools/bin/gxtexconv")
+dkp_find_file(DKP_GXTEXCONV "tools/bin/gxtexconv")
 
-if(DEVKITPRO_GXTEXCONV)
+if(DKP_GXTEXCONV)
     define_property(
             TARGET
-            PROPERTY DEVKITPRO_GXTEXCONV_TPL_FILES
+            PROPERTY DKP_GXTEXCONV_TPL_FILES
             BRIEF_DOCS "List of TPL files generated for a gxtexconv target"
     )
 
@@ -16,15 +16,15 @@ if(DEVKITPRO_GXTEXCONV)
     # If scf_files are absolute, they must be under scf_files_dir
     # If scf_files_dir is relative, CMAKE_CURRENT_SOURCE_DIR will be used as its base directory
     # If out_dir is relative, CMAKE_CURRENT_BINARY_DIR will be used as its base directory
-    function(devkitpro_add_gxtexconv target scf_files scf_files_dir out_dir)
+    function(dkp_add_gxtexconv target scf_files scf_files_dir out_dir)
 
-        devkitpro_make_absolute_if_relative(scf_files_dir ${CMAKE_CURRENT_SOURCE_DIR})
-        devkitpro_make_absolute_if_relative(out_dir ${CMAKE_CURRENT_BINARY_DIR})
+        dkp_make_absolute_if_relative(scf_files_dir ${CMAKE_CURRENT_SOURCE_DIR})
+        dkp_make_absolute_if_relative(out_dir ${CMAKE_CURRENT_BINARY_DIR})
 
         # Add a command to process each file with gxtexconv
         foreach(scf_file IN LISTS scf_files)
 
-            devkitpro_get_relative_and_absolute(${scf_file} ${scf_files_dir} scf_file_relative scf_file_absolute)
+            dkp_get_relative_and_absolute(${scf_file} ${scf_files_dir} scf_file_relative scf_file_absolute)
             list(APPEND scf_files_absolute ${scf_file_absolute})
 
             # Compute output files
@@ -46,7 +46,7 @@ if(DEVKITPRO_GXTEXCONV)
             add_custom_command(
                     OUTPUT ${out_file_tpl} ${out_file_h} ${out_file_dep}
                     DEPFILE ${out_file_dep}
-                    COMMAND ${DEVKITPRO_GXTEXCONV} ARGS -s ${scf_file_absolute} -o ${out_file_tpl} -d ${out_file_dep}
+                    COMMAND ${DKP_GXTEXCONV} ARGS -s ${scf_file_absolute} -o ${out_file_tpl} -d ${out_file_dep}
             )
 
         endforeach(scf_file)
@@ -71,18 +71,18 @@ if(DEVKITPRO_GXTEXCONV)
                 FILES ${out_files_h}
         )
         set_target_properties(${target} PROPERTIES
-                DEVKITPRO_GXTEXCONV_TPL_FILES "${out_files_tpl}"
+                DKP_GXTEXCONV_TPL_FILES "${out_files_tpl}"
         )
         add_dependencies(${target} ${target_custom})
 
         # Log Target Info
-        devkitpro_message(VERBOSE ${target})
+        dkp_message(VERBOSE ${target})
         get_target_property(include_dirs ${target} INTERFACE_INCLUDE_DIRECTORIES)
-        devkitpro_message(VERBOSE "    Include Dirs: ${include_dirs}")
+        dkp_message(VERBOSE "    Include Dirs: ${include_dirs}")
         get_target_property(hfiles ${target} HEADER_SET_gxtexconv)
-        devkitpro_message(VERBOSE "    Headers: ${hfiles}")
-        get_target_property(tplfiles ${target} DEVKITPRO_GXTEXCONV_TPL_FILES)
-        devkitpro_message(VERBOSE "    TPLs: ${tplfiles}")
+        dkp_message(VERBOSE "    Headers: ${hfiles}")
+        get_target_property(tplfiles ${target} DKP_GXTEXCONV_TPL_FILES)
+        dkp_message(VERBOSE "    TPLs: ${tplfiles}")
 
-    endfunction(devkitpro_add_gxtexconv)
+    endfunction(dkp_add_gxtexconv)
 endif()
