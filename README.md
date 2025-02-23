@@ -1,5 +1,5 @@
-# devkitpro-cmake-config
-CMake Package Config for devkitPro.
+# devkitpro-cmake-better
+Better CMake Package for devkitPro.
 
 ## Why?
 
