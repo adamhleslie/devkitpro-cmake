@@ -1,5 +1,5 @@
 # devkitpro-cmake-better
-Better CMake Package for devkitPro.
+Better CMake Package for devkitPro tools and libraries.
 
 ## Why?
 
@@ -19,7 +19,7 @@ If the package fails to find anything required, it will fail with a `FATAL_ERROR
 
 ### Toolchains
 Optional toolchain files for devkitPro platforms are included under the [toolchains](toolchains) directory.
-These are simpler than the ones packaged with devkitPro since they leave libraries and tools to the package config.
+These are simpler than the ones packaged with devkitPro since they leave tools and libraries to the package config.
 For a list of differences, see the [toolchains directory readme](toolchains/README.md).  
 These are not required to use the package config, the toolchain files included with devkitPro work as well.
 
