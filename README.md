@@ -13,7 +13,7 @@ By using modern "Target Based" CMake, there's less you have to worry about to in
 Template projects are provided for each toolchain, and everything provided by this project has example usage, so you can make your homebrew ideas come to life. See Templates and Examples below
 
 ## Setup
-devkitPro's root directory is expected to be installed at `/opt/devkitpro`, but `DEVKITPRO` may be defined as a CMake variable or environment variable to supply a custom install location.
+devkitPro's root directory is expected to be installed at `/opt/devkitpro`, but `DEVKITPRO` may be defined as a CMake variable or environment variable to supply a custom install location. For installing devkitPro, see their [Getting Started Wiki page](https://devkitpro.org/wiki/Getting_Started).
 
 If the package fails to find anything required, it will fail with a `FATAL_ERROR` message.
 
