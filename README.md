@@ -1,5 +1,5 @@
-# devkitpro-cmake-better
-Better CMake Package for devkitPro tools and libraries.
+# devkitpro-cmake
+Adam's CMake Package for devkitPro tools and libraries.
 
 ## Why?
 
