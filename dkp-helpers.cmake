@@ -9,6 +9,7 @@ macro(dkp_message level msg)
 endmacro()
 
 # TODO: Should we use find_program? We know the path directly...
+# TODO: Add helper string for which package to install from dkp pacman
 function(dkp_find_file variable file_path_relative)
     cmake_path(GET file_path_relative STEM file_stem)
     dkp_message(CHECK_START "Finding ${file_stem}")

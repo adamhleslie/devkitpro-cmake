@@ -17,3 +17,13 @@ endif()
 list(APPEND CMAKE_MODULE_PATH
         "${CMAKE_CURRENT_LIST_DIR}/modules"
 )
+
+# Use .elf extension for compiled binaries
+set(CMAKE_EXECUTABLE_SUFFIX .elf)
+
+# Disable shared library support
+set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "Shared libs not available")
+set_property(GLOBAL PROPERTY TARGET_SUPPORTS_SHARED_LIBS FALSE)
+
+# Set assembly to be compiled with CPP
+string(APPEND CMAKE_ASM_FLAGS_INIT " -x assembler-with-cpp")

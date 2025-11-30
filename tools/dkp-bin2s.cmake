@@ -60,6 +60,9 @@ if(DKP_BIN2S)
                     COMMAND ${DKP_BIN2S} ARGS -a ${alignment} -H ${out_file_h} ${binary_file_absolute} > ${out_file_s}
             )
 
+            # Mark generated file as assembly language
+            set_source_files_properties(${out_file_s} PROPERTIES LANGUAGE ASM)
+
         endforeach(binary_file)
 
         add_library(${target} OBJECT ${out_files_s})
