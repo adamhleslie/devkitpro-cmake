@@ -25,5 +25,5 @@ set(CMAKE_EXECUTABLE_SUFFIX .elf)
 set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "Shared libs not available")
 set_property(GLOBAL PROPERTY TARGET_SUPPORTS_SHARED_LIBS FALSE)
 
-# Set assembly to be compiled with CPP
+# Set assembly to be preprocessed by GCC
 string(APPEND CMAKE_ASM_FLAGS_INIT " -x assembler-with-cpp")

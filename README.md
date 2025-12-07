@@ -48,6 +48,7 @@ to see them: `set(CMAKE_MESSAGE_LOG_LEVEL VERBOSE)`.
 # TODO
 - Analyze remaining Wii / GameCube dkp toolchain files for things that should be added, and start tracking compatibility / changes
 - Handle failure of finding libs and programs eloquently, add support for indicating devkitpro packages for logging's sake, and indicate supported versioning of devkitPro packages
+- dkp-gcdsptool.cmake
 - Update docs
 - Test Visual Studio, and VS Code
 - nds support next
