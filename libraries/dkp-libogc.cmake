@@ -36,7 +36,7 @@ function(dkp_libogc_import lib_name is_cube_lib is_wii_lib)
             dkp_message(CHECK_FAIL "Could not find at ${wii_lib_location}")
         endif()
     endif()
-endfunction(dkp_libogc_import)
+endfunction()
 
 set(libogc_import_failed FALSE)
 dkp_message(CHECK_START "Importing libogc")

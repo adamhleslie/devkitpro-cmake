@@ -86,5 +86,5 @@ if(DKP_BIN2S)
         get_target_property(sfiles ${target} SOURCES)
         dkp_message(VERBOSE "    Sources: ${sfiles}")
 
-    endfunction(dkp_add_bin2s)
+    endfunction()
 endif()

@@ -30,5 +30,5 @@ if(DKP_ELF2DOL)
         dkp_message(VERBOSE "    Source File: ${source_file}")
         dkp_message(VERBOSE "    .dol File: ${dol_file}")
 
-    endfunction(dkp_add_elf2dol)
+    endfunction()
 endif()

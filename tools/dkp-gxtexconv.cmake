@@ -84,5 +84,5 @@ if(DKP_GXTEXCONV)
         get_target_property(tplfiles ${target} DKP_GXTEXCONV_TPL_FILES)
         dkp_message(VERBOSE "    TPLs: ${tplfiles}")
 
-    endfunction(dkp_add_gxtexconv)
+    endfunction()
 endif()

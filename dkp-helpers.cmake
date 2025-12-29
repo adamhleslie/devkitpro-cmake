@@ -42,7 +42,7 @@ function(dkp_find_file variable file_path_relative)
             dkp_message(FATAL_ERROR "Not at expected location ${file_path_absolute}")
         endif()
     endif()
-endfunction(dkp_find_file)
+endfunction()
 
 function(dkp_get_relative_and_absolute path base_directory relative_path_variable absolute_path_variable)
     cmake_path(IS_ABSOLUTE path path_is_absolute)
@@ -61,7 +61,7 @@ function(dkp_get_relative_and_absolute path base_directory relative_path_variabl
 
     set(${absolute_path_variable} ${absolute_path} PARENT_SCOPE)
     set(${relative_path_variable} ${relative_path} PARENT_SCOPE)
-endfunction(dkp_get_relative_and_absolute)
+endfunction()
 
 function(dkp_make_absolute_if_relative path_variable default_base_directory)
     cmake_path(IS_ABSOLUTE ${path_variable} is_absolute)
@@ -72,4 +72,4 @@ function(dkp_make_absolute_if_relative path_variable default_base_directory)
     endif()
 
     set(${path_variable} ${absolute_path} PARENT_SCOPE)
-endfunction(dkp_make_absolute_if_relative)
+endfunction()

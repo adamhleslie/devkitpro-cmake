@@ -41,6 +41,8 @@ The relevant functions will use the provided path to the executable instead of t
 
 `dkp_add_gxtexconv(target scf_files)` + Target Property: `DKP_GXTEXCONV_TPL_FILES`
 
+`dkp_target_generate_symbol_table(target)` - Generates .map and .lst files for debugging
+
 ## Debugging
 Target generating functions log `VERBOSE` messages for relevant properties. Set your CMake log level to `VERBOSE` to greater
 to see them: `set(CMAKE_MESSAGE_LOG_LEVEL VERBOSE)`.

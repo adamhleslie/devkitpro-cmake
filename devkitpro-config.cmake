@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20.0)
+cmake_minimum_required(VERSION 3.25.0)
 
 include("${CMAKE_CURRENT_LIST_DIR}/dkp-helpers.cmake")
 
