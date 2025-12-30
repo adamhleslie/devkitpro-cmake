@@ -6,12 +6,12 @@ block(SCOPE_FOR VARIABLES)
     set(arch_flags "-mogc" "-mcpu=750" "-meabi" "-mhard-float")
     set(definitions "GEKKO")
     target_compile_options(dkp::gamecube
-            INTERFACE ${arch_flags}
+        INTERFACE ${arch_flags}
     )
     target_link_options(dkp::gamecube
-            INTERFACE ${arch_flags}
+        INTERFACE ${arch_flags}
     )
     target_compile_definitions(dkp::gamecube
-            INTERFACE ${definitions}
+        INTERFACE ${definitions}
     )
 endblock()

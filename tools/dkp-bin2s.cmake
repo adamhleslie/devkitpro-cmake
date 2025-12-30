@@ -1,7 +1,7 @@
 include_guard(GLOBAL)
 # OUT: dkp_add_bin2s function adds an object library for converting binary files to object files
 
-dkp_find_file(DKP_BIN2S "tools/bin/bin2s")
+dkp_find_file(DKP_BIN2S "tools/bin/bin2s" "general-tools")
 
 if(DKP_BIN2S)
     # Generates assembly and header files from binary files, maintaining the original directory structure
@@ -55,9 +55,9 @@ if(DKP_BIN2S)
 
             # Create bin2s command
             add_custom_command(
-                    OUTPUT ${out_file_h} ${out_file_s}
-                    DEPENDS ${binary_file_absolute}
-                    COMMAND ${DKP_BIN2S} ARGS -a ${alignment} -H ${out_file_h} ${binary_file_absolute} > ${out_file_s}
+                OUTPUT ${out_file_h} ${out_file_s}
+                DEPENDS ${binary_file_absolute}
+                COMMAND ${DKP_BIN2S} ARGS -a ${alignment} -H ${out_file_h} ${binary_file_absolute} > ${out_file_s}
             )
 
             # Mark generated file as assembly language
@@ -67,14 +67,14 @@ if(DKP_BIN2S)
 
         add_library(${target} OBJECT ${out_files_s})
         target_include_directories(${target}
-                INTERFACE ${out_dir}
+            INTERFACE ${out_dir}
         )
         target_sources(${target}
-                INTERFACE
-                FILE_SET bin2s
-                TYPE HEADERS
-                BASE_DIRS ${out_dir}
-                FILES ${out_files_h}
+            INTERFACE
+            FILE_SET bin2s
+            TYPE HEADERS
+            BASE_DIRS ${out_dir}
+            FILES ${out_files_h}
         )
 
         # Log Target Info

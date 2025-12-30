@@ -2,13 +2,13 @@ include_guard(GLOBAL)
 # OUT: dkp_add_gxtexconv function adds a interface library for converting .scf files and their associated textures into .tpl files
 #      DKP_GXTEXCONV_TPL_FILES property on target set to the list of generated .tpl files
 
-dkp_find_file(DKP_GXTEXCONV "tools/bin/gxtexconv")
+dkp_find_file(DKP_GXTEXCONV "tools/bin/gxtexconv" "gamecube-tools")
 
 if(DKP_GXTEXCONV)
     define_property(
-            TARGET
-            PROPERTY DKP_GXTEXCONV_TPL_FILES
-            BRIEF_DOCS "List of TPL files generated for a gxtexconv target"
+        TARGET
+        PROPERTY DKP_GXTEXCONV_TPL_FILES
+        BRIEF_DOCS "List of TPL files generated for a gxtexconv target"
     )
 
     # Generates tpl and header files from scf files and their dependencies, maintaining the original directory structure
@@ -44,9 +44,9 @@ if(DKP_GXTEXCONV)
             # Create gxtexconv command
             # Note: out_file_tpl must be the first output listed, making it the primary output, because the generated depfile indicates it as the source of dependency
             add_custom_command(
-                    OUTPUT ${out_file_tpl} ${out_file_h} ${out_file_dep}
-                    DEPFILE ${out_file_dep}
-                    COMMAND ${DKP_GXTEXCONV} ARGS -s ${scf_file_absolute} -o ${out_file_tpl} -d ${out_file_dep}
+                OUTPUT ${out_file_tpl} ${out_file_h} ${out_file_dep}
+                DEPFILE ${out_file_dep}
+                COMMAND ${DKP_GXTEXCONV} ARGS -s ${scf_file_absolute} -o ${out_file_tpl} -d ${out_file_dep}
             )
 
         endforeach(scf_file)
@@ -54,24 +54,24 @@ if(DKP_GXTEXCONV)
         # Custom target for file generation
         set(target_custom "${target}_custom")
         add_custom_target(${target_custom}
-                DEPENDS ${out_files_h} ${out_files_tpl} ${out_file_dep}
-                SOURCES ${scf_files_absolute}
+            DEPENDS ${out_files_h} ${out_files_tpl} ${out_file_dep}
+            SOURCES ${scf_files_absolute}
         )
 
         # Interface target for include dependency
         add_library(${target} INTERFACE)
         target_include_directories(${target}
-                INTERFACE ${out_dir}
+            INTERFACE ${out_dir}
         )
         target_sources(${target}
-                INTERFACE
-                FILE_SET gxtexconv
-                TYPE HEADERS
-                BASE_DIRS ${out_dir}
-                FILES ${out_files_h}
+            INTERFACE
+            FILE_SET gxtexconv
+            TYPE HEADERS
+            BASE_DIRS ${out_dir}
+            FILES ${out_files_h}
         )
         set_target_properties(${target} PROPERTIES
-                DKP_GXTEXCONV_TPL_FILES "${out_files_tpl}"
+            DKP_GXTEXCONV_TPL_FILES "${out_files_tpl}"
         )
         add_dependencies(${target} ${target_custom})
 

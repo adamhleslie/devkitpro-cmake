@@ -8,9 +8,9 @@ macro(dkp_message level msg)
     endif()
 endmacro()
 
-# TODO: Should we use find_program? We know the path directly...
-# TODO: Add helper string for which package to install from dkp pacman
-function(dkp_find_file variable file_path_relative)
+# Custom find function reliant on expected devkitPro package installation structure
+# CMake variables or environment variables may be used to bypass default search
+function(dkp_find_file variable file_path_relative package)
     cmake_path(GET file_path_relative STEM file_stem)
     dkp_message(CHECK_START "Finding ${file_stem}")
     if(DEFINED ${variable})
@@ -39,7 +39,7 @@ function(dkp_find_file variable file_path_relative)
             dkp_message(CHECK_PASS "Found ${file_path_absolute}")
         else()
             dkp_message(CHECK_FAIL "Not at expected location ${file_path_absolute}")
-            dkp_message(FATAL_ERROR "Not at expected location ${file_path_absolute}")
+            dkp_message(FATAL_ERROR "${file_stem} not found at ${file_path_absolute}\nThis file is part of the package '${package}'.\nPlease check your installation, or install via:\n     dkp-pacman -S ${package}")
         endif()
     endif()
 endfunction()

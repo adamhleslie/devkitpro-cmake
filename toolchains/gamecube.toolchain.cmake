@@ -11,7 +11,7 @@ set(CMAKE_LIBRARY_ARCHITECTURE "cube" CACHE INTERNAL "abi")
 
 # Add GameCube specific find_... function paths
 list(APPEND CMAKE_SYSTEM_PREFIX_PATH
-        "${DEVKITPRO}/portlibs/gamecube"
+    "${DEVKITPRO}/portlibs/gamecube"
 )
 
 # Find pkg-config specific to GameCube

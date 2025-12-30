@@ -15,7 +15,7 @@ endif()
 
 # Suppress "System is unknown to cmake" warning via "./modules/platform/..." files
 list(APPEND CMAKE_MODULE_PATH
-        "${CMAKE_CURRENT_LIST_DIR}/modules"
+    "${CMAKE_CURRENT_LIST_DIR}/modules"
 )
 
 # Use .elf extension for compiled binaries

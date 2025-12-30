@@ -17,20 +17,20 @@ if(CMAKE_NM)
 
         # Linker generates the .map file (not tracked as byproduct by build system)
         target_link_options(${target} PRIVATE
-                -Wl,-Map,${map_file}
+            -Wl,-Map,${map_file}
         )
         
         # Ensure map file is cleaned
         set_target_properties(${target} PROPERTIES
-                ADDITIONAL_CLEAN_FILES "${map_file}"
+            ADDITIONAL_CLEAN_FILES "${map_file}"
         )
 
         # POST_BUILD: nm generates the .lst file
         add_custom_command(
-                TARGET ${target} POST_BUILD
-                COMMAND ${CMAKE_NM} -CSn $<TARGET_FILE:${target}> > ${lst_file}
-                BYPRODUCTS ${lst_file}
-                COMMENT "Generating symbol table for ${target}"
+            TARGET ${target} POST_BUILD
+            COMMAND ${CMAKE_NM} -CSn $<TARGET_FILE:${target}> > ${lst_file}
+            BYPRODUCTS ${lst_file}
+            COMMENT "Generating symbol table for ${target}"
         )
 
         # Log Target Info

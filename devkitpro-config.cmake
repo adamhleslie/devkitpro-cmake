@@ -19,9 +19,9 @@ endif()
 
 # Find all files to include
 file(GLOB include_files LIST_DIRECTORIES false
-        "${CMAKE_CURRENT_LIST_DIR}/platforms/*.cmake"
-        "${CMAKE_CURRENT_LIST_DIR}/libraries/*.cmake"
-        "${CMAKE_CURRENT_LIST_DIR}/tools/*.cmake"
+    "${CMAKE_CURRENT_LIST_DIR}/platforms/*.cmake"
+    "${CMAKE_CURRENT_LIST_DIR}/libraries/*.cmake"
+    "${CMAKE_CURRENT_LIST_DIR}/tools/*.cmake"
 )
 
 foreach(include_file IN LISTS include_files)

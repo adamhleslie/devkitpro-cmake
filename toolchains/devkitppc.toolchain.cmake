@@ -13,10 +13,10 @@ set(DKP_BIN2S_ALIGNMENT 32)
 
 # Add find_... function paths for cross-compilation
 list(APPEND CMAKE_SYSTEM_PREFIX_PATH
-        "${DEVKITPRO}/devkitPPC"
-        "${DEVKITPRO}/devkitPPC/powerpc-eabi"
-        "${DEVKITPRO}/portlibs/ppc"
-        "${DEVKITPRO}/tools"
+    "${DEVKITPRO}/devkitPPC"
+    "${DEVKITPRO}/devkitPPC/powerpc-eabi"
+    "${DEVKITPRO}/portlibs/ppc"
+    "${DEVKITPRO}/tools"
 )
 
 # Find core compilation programs based on architecture triplet

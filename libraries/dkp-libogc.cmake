@@ -10,7 +10,7 @@ function(dkp_libogc_import lib_name is_cube_lib is_wii_lib)
         if(EXISTS ${cube_lib_location})
             add_library(dkp::libogc::gamecube::${lib_name} STATIC IMPORTED)
             set_target_properties(dkp::libogc::gamecube::${lib_name} PROPERTIES
-                    IMPORTED_LOCATION ${cube_lib_location}
+                IMPORTED_LOCATION ${cube_lib_location}
             )
             target_include_directories(dkp::libogc::gamecube::${lib_name} INTERFACE "${DEVKITPRO}/libogc/include")
             dkp_message(CHECK_PASS "Imported")
@@ -27,7 +27,7 @@ function(dkp_libogc_import lib_name is_cube_lib is_wii_lib)
         if(EXISTS ${wii_lib_location})
             add_library(dkp::libogc::wii::${lib_name} STATIC IMPORTED)
             set_target_properties(dkp::libogc::wii::${lib_name} PROPERTIES
-                    IMPORTED_LOCATION ${wii_lib_location}
+                IMPORTED_LOCATION ${wii_lib_location}
             )
             target_include_directories(dkp::libogc::wii::${lib_name} INTERFACE "${DEVKITPRO}/libogc/include")
             dkp_message(CHECK_PASS "Imported")
@@ -40,6 +40,14 @@ endfunction()
 
 set(libogc_import_failed FALSE)
 dkp_message(CHECK_START "Importing libogc")
+
+# Check if the libogc directory exists
+cmake_path(APPEND libogc_dir ${DEVKITPRO} "libogc")
+if(NOT EXISTS "${libogc_dir}")
+    dkp_message(CHECK_FAIL "libogc directory not found at ${libogc_dir}")
+    dkp_message(FATAL_ERROR "libogc directory not found at ${libogc_dir}\nThis library is found in the package 'libogc'.\nPlease check your installation, or install via:\n     dkp-pacman -S libogc")
+endif()
+
 list(APPEND CMAKE_MESSAGE_INDENT "  ")
 
 dkp_libogc_import(aesnd       TRUE  TRUE)

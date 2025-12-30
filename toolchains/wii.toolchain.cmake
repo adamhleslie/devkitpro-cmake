@@ -11,7 +11,7 @@ set(CMAKE_LIBRARY_ARCHITECTURE "wii" CACHE INTERNAL "abi")
 
 # Add Wii specific find_... function paths
 list(APPEND CMAKE_SYSTEM_PREFIX_PATH
-        "${DEVKITPRO}/portlibs/wii"
+    "${DEVKITPRO}/portlibs/wii"
 )
 
 # Find pkg-config specific to Wii
