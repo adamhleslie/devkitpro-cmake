@@ -8,15 +8,15 @@ if(NOT DEFINED DEVKITPRO)
     elseif(EXISTS "/opt/devkitpro")
         set(DEVKITPRO "/opt/devkitpro")
         message(STATUS "Setting DEVKITPRO to default location: ${DEVKITPRO}")
-    else()
-        message(FATAL_ERROR "DEVKITPRO not valid: Default location \"/opt/devkitpro\" does not exist, and DEVKITPRO not set in environment")
     endif()
 endif()
 
+if(NOT EXISTS ${DEVKITPRO})
+    message(FATAL_ERROR "DEVKITPRO not found. Install to default location \"/opt/devkitpro\" or provide custom install location via DEVKITPRO environment variable or cmake variable.\nSee wiki for installation instructions: https://devkitpro.org/wiki/Getting_Started")
+endif()
+
 # Suppress "System is unknown to cmake" warning via "./modules/platform/..." files
-list(APPEND CMAKE_MODULE_PATH
-    "${CMAKE_CURRENT_LIST_DIR}/modules"
-)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/modules")
 
 # Use .elf extension for compiled binaries
 set(CMAKE_EXECUTABLE_SUFFIX .elf)

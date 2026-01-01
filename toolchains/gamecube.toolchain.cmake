@@ -10,9 +10,7 @@ set(CMAKE_SYSTEM_NAME "NintendoGameCube")
 set(CMAKE_LIBRARY_ARCHITECTURE "cube" CACHE INTERNAL "abi")
 
 # Add GameCube specific find_... function paths
-list(APPEND CMAKE_SYSTEM_PREFIX_PATH
-    "${DEVKITPRO}/portlibs/gamecube"
-)
+list(APPEND CMAKE_SYSTEM_PREFIX_PATH "${DEVKITPRO}/portlibs/gamecube")
 
 # Find pkg-config specific to GameCube
 find_program(PKG_CONFIG_EXECUTABLE "powerpc-eabi-pkg-config" HINTS "${DEVKITPRO}/portlibs/gamecube/bin" REQUIRED)
