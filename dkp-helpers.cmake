@@ -1,10 +1,12 @@
 include_guard(GLOBAL)
 
 macro(dkp_message level msg)
-    if(${level} STREQUAL "CHECK_PASS" OR ${level} STREQUAL "CHECK_FAIL")
-        message(${level} "${msg}")
-    else()
-        message(${level} "[devkitPro] ${msg}")
+    if(NOT devkitpro_FIND_QUIETLY OR ${level} STREQUAL "FATAL_ERROR")
+        if(${level} STREQUAL "CHECK_PASS" OR ${level} STREQUAL "CHECK_FAIL")
+            message(${level} "${msg}")
+        else()
+            message(${level} "[devkitPro] ${msg}")
+        endif()
     endif()
 endmacro()
 
