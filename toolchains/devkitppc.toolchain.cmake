@@ -19,6 +19,9 @@ list(APPEND CMAKE_SYSTEM_PREFIX_PATH
     "${DEVKITPRO}/tools"
 )
 
+# Add pkg-config path for cross-compilation
+set(CACHE{CMAKE_PKG_CONFIG_PC_PATH} TYPE PATH VALUE "${DEVKITPRO}/portlibs/ppc/lib/pkgconfig")
+
 # Find core compilation programs based on architecture triplet
 set(triplet "powerpc-eabi")
 set(hint "${DEVKITPRO}/devkitPPC/bin")

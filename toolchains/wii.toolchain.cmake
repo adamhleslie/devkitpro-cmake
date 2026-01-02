@@ -14,3 +14,4 @@ list(APPEND CMAKE_SYSTEM_PREFIX_PATH "${DEVKITPRO}/portlibs/wii")
 
 # Find pkg-config specific to Wii
 find_program(PKG_CONFIG_EXECUTABLE "powerpc-eabi-pkg-config" HINTS "${DEVKITPRO}/portlibs/wii/bin" REQUIRED)
+set(CACHE{CMAKE_PKG_CONFIG_BIN} TYPE FILEPATH VALUE "${PKG_CONFIG_EXECUTABLE}")

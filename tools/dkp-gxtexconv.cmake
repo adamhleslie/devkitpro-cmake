@@ -2,9 +2,9 @@ include_guard(GLOBAL)
 # OUT: dkp_add_gxtexconv function adds a interface library for converting .scf files and their associated textures into .tpl files
 #      DKP_GXTEXCONV_TPL_FILES property on target set to the list of generated .tpl files
 
-dkp_find_file(DKP_GXTEXCONV "tools/bin/gxtexconv" "gamecube-tools")
+dkp_find_component_file(gxtexconv DKP_GXTEXCONV "tools/bin/gxtexconv" "gamecube-tools")
 
-if(DKP_GXTEXCONV)
+if(devkitpro_gxtexconv_FOUND)
     define_property(
         TARGET
         PROPERTY DKP_GXTEXCONV_TPL_FILES
@@ -76,13 +76,13 @@ if(DKP_GXTEXCONV)
         add_dependencies(${target} ${target_custom})
 
         # Log Target Info
-        dkp_message(VERBOSE ${target})
+        message(VERBOSE ${target})
         get_target_property(include_dirs ${target} INTERFACE_INCLUDE_DIRECTORIES)
-        dkp_message(VERBOSE "    Include Dirs: ${include_dirs}")
+        message(VERBOSE "    Include Dirs: ${include_dirs}")
         get_target_property(hfiles ${target} HEADER_SET_gxtexconv)
-        dkp_message(VERBOSE "    Headers: ${hfiles}")
+        message(VERBOSE "    Headers: ${hfiles}")
         get_target_property(tplfiles ${target} DKP_GXTEXCONV_TPL_FILES)
-        dkp_message(VERBOSE "    TPLs: ${tplfiles}")
+        message(VERBOSE "    TPLs: ${tplfiles}")
 
     endfunction()
 endif()

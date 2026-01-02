@@ -1,9 +1,9 @@
 include_guard(GLOBAL)
 # OUT: dkp_add_elf2dol function adds a custom target for converting an executable elf file to a dol file
 
-dkp_find_file(DKP_ELF2DOL "tools/bin/elf2dol" "gamecube-tools")
+dkp_find_component_file(elf2dol DKP_ELF2DOL "tools/bin/elf2dol" "gamecube-tools")
 
-if(DKP_ELF2DOL)
+if(devkitpro_elf2dol_FOUND)
     function(dkp_add_elf2dol target dol_file_name source_file default_build_target)
 
         cmake_path(APPEND dol_file ${CMAKE_CURRENT_BINARY_DIR} ${dol_file_name})
@@ -26,9 +26,9 @@ if(DKP_ELF2DOL)
         endif()
 
         # Log Target Info
-        dkp_message(VERBOSE ${target})
-        dkp_message(VERBOSE "    Source File: ${source_file}")
-        dkp_message(VERBOSE "    .dol File: ${dol_file}")
+        message(VERBOSE ${target})
+        message(VERBOSE "    Source File: ${source_file}")
+        message(VERBOSE "    .dol File: ${dol_file}")
 
     endfunction()
 endif()

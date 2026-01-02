@@ -34,9 +34,9 @@ if(CMAKE_NM)
         )
 
         # Log Target Info
-        dkp_message(VERBOSE ${target})
-        dkp_message(VERBOSE "    Map File: ${map_file}")
-        dkp_message(VERBOSE "    Symbol Table: ${lst_file}")
+        message(VERBOSE ${target})
+        message(VERBOSE "    Map File: ${map_file}")
+        message(VERBOSE "    Symbol Table: ${lst_file}")
 
     endfunction()
 endif()

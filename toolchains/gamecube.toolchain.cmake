@@ -14,3 +14,4 @@ list(APPEND CMAKE_SYSTEM_PREFIX_PATH "${DEVKITPRO}/portlibs/gamecube")
 
 # Find pkg-config specific to GameCube
 find_program(PKG_CONFIG_EXECUTABLE "powerpc-eabi-pkg-config" HINTS "${DEVKITPRO}/portlibs/gamecube/bin" REQUIRED)
+set(CACHE{CMAKE_PKG_CONFIG_BIN} TYPE FILEPATH VALUE "${PKG_CONFIG_EXECUTABLE}")

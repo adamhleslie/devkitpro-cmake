@@ -1,9 +1,9 @@
 include_guard(GLOBAL)
 # OUT: dkp_add_bin2s function adds an object library for converting binary files to object files
 
-dkp_find_file(DKP_BIN2S "tools/bin/bin2s" "general-tools")
+dkp_find_component_file(bin2s DKP_BIN2S "tools/bin/bin2s" "general-tools")
 
-if(DKP_BIN2S)
+if(devkitpro_bin2s_FOUND)
     # Generates assembly and header files from binary files, maintaining the original directory structure
     # Extensions in binary file names are appended to the generated file names with an underscore
     # - texture.tpl -> texture_tpl.h / texture_tpl.s
@@ -78,13 +78,13 @@ if(DKP_BIN2S)
         )
 
         # Log Target Info
-        dkp_message(VERBOSE ${target})
+        message(VERBOSE ${target})
         get_target_property(include_dirs ${target} INTERFACE_INCLUDE_DIRECTORIES)
-        dkp_message(VERBOSE "    Include Dirs: ${include_dirs}")
+        message(VERBOSE "    Include Dirs: ${include_dirs}")
         get_target_property(hfiles ${target} HEADER_SET_bin2s)
-        dkp_message(VERBOSE "    Headers: ${hfiles}")
+        message(VERBOSE "    Headers: ${hfiles}")
         get_target_property(sfiles ${target} SOURCES)
-        dkp_message(VERBOSE "    Sources: ${sfiles}")
+        message(VERBOSE "    Sources: ${sfiles}")
 
     endfunction()
 endif()

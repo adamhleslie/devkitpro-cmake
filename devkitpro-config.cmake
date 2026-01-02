@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25.0)
+cmake_minimum_required(VERSION 4.2.0)
 
 include("${CMAKE_CURRENT_LIST_DIR}/dkp-helpers.cmake")
 
@@ -23,7 +23,7 @@ if(NOT EXISTS ${DEVKITPRO})
 endif()
 
 # Find all files to include
-file(GLOB include_files LIST_DIRECTORIES false
+file(GLOB_RECURSE include_files LIST_DIRECTORIES false
     "${CMAKE_CURRENT_LIST_DIR}/platforms/*.cmake"
     "${CMAKE_CURRENT_LIST_DIR}/libraries/*.cmake"
     "${CMAKE_CURRENT_LIST_DIR}/tools/*.cmake"
