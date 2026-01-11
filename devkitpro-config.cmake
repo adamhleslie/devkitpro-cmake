@@ -33,6 +33,7 @@ foreach(include_file IN LISTS include_files)
     include(${include_file})
 endforeach()
 
+# TODO: Look into refactoring to use FindPackageHandleStandardArgs: https://cmake.org/cmake/help/latest/module/FindPackageHandleStandardArgs.html
 # Handle component requests
 if(devkitpro_FIND_COMPONENTS)
     block(SCOPE_FOR VARIABLES PROPAGATE devkitpro_FOUND devkitpro_NOT_FOUND_MESSAGE)

@@ -57,8 +57,11 @@ dkp_message(STATUS "Importing devkitPPC libraries")
 list(APPEND CMAKE_MESSAGE_INDENT "  ")
 
 # Order matters: Dependencies need to be imported first in order to support the "Requires" pkg-config field
+dkp_ppc_pkgconfig_import(libpng     "ppc-libpng")           # Depends on zlib
+dkp_ppc_pkgconfig_import(zlib       "ppc-libz")
+
 dkp_ppc_pkgconfig_import(ogg        "ppc-libogg")
-dkp_ppc_pkgconfig_import(vorbisidec "ppc-libvorbisidec")
+dkp_ppc_pkgconfig_import(vorbisidec "ppc-libvorbisidec")    # Depends on ogg
 
 list(POP_BACK CMAKE_MESSAGE_INDENT)
 dkp_message(STATUS "Importing devkitPPC libraries - Finished")

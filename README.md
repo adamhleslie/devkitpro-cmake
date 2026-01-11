@@ -46,3 +46,27 @@ The relevant functions will use the provided path to the executable instead of t
 ## Debugging
 Target generating functions log `VERBOSE` messages for relevant properties. Set your CMake log level to `VERBOSE` to greater
 to see them: `set(CMAKE_MESSAGE_LOG_LEVEL VERBOSE)`.
+
+## Other Package Configs
+### opengx - GameCube / Wii
+#### Installation - GameCube
+Found in `gamecube-opengx` package. Install with command:
+
+```bash
+dkp-pacman -S gamecube-opengx
+```
+
+#### Installation - Wii
+Found in `wii-opengx` package. Install with command:
+
+```bash
+dkp-pacman -S wii-opengx
+```
+
+#### Usage
+Provides `OpenGLConfig.cmake` under `portlibs`. Use as follows:
+
+```cmake
+find_package(OpenGL)
+```
+See [OpenGLConfig.cmake](https://github.com/devkitPro/opengx/blob/master/OpenGLConfig.cmake) for additional reference.

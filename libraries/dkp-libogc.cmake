@@ -19,7 +19,7 @@ endfunction()
 
 function(dkp_libogc_import lib_name is_cube_lib is_wii_lib)
     if(is_cube_lib)
-        dkp_libogc_import_platform(${lib_name} "cube" "gamecube" "Gamecube")
+        dkp_libogc_import_platform(${lib_name} "cube" "gamecube" "GameCube")
     endif()
 
     if(is_wii_lib)
